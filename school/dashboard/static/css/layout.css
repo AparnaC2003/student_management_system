@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #3f6fff, #70a5ff);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.dashboard-container {
+    display: flex;
+    height: 100%;
+}
+
+/* ================= SIDEBAR ================== */
+
+.sidebar {
+    width: 260px;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(10px);
+    border-right: 2px solid rgba(255, 255, 255, 0.4);
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.school-name {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.logout {
+    margin-top: 50px;
+    padding: 12px;
+    text-align: left;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    transition: 0.3s ease;
+}
+
+.logout:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* ================= MAIN CONTENT ================== */
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.topbar {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.topbar h2 {
+    color: #fff;
+    font-weight: 500;
+}
+
+.content-section {
+    background: rgba(255, 255, 255, 0.18);
+    padding: 20px;
+    border-radius: 12px;
+    min-height: 70vh;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #fff;
+}

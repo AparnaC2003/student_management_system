@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dashboard{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- =============== LEFT SIDEBAR =============== -->
+    <aside class="sidebar">
+        <h2 class="school-name">School Management</h2>
+
+        <nav class="menu">
+            <a href="#" class="menu-item"><i class='bx bxs-dashboard'></i> Dashboard</a>
+            <a href="#" class="menu-item"><i class='bx bxs-user-detail'></i> Profile</a>
+            <a href="#" class="menu-item"><i class='bx bxs-book-alt'></i> Classes</a>
+            <a href="#" class="menu-item"><i class='bx bxs-group'></i> Students</a>
+            <a href="#" class="menu-item"><i class='bx bx-cog'></i> Settings</a>
+        </nav>
+
+        <a href="{% url 'login' %}" class="logout">
+            <i class='bx bx-log-out'></i> Logout
+        </a>
+    </aside>
+
+    <!-- =============== MAIN AREA =============== -->
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+            <h2>{% block page_title %}Dashboard{% endblock %}</h2>
+        </header>
+
+        <!-- MAIN PAGE CONTENT -->
+        <section class="content-section">
+            {% block content %}
+            {% endblock %}
+        </section>
+
+    </main>
+</div>
+
+</body>
+</html>

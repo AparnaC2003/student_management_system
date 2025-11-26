@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}?v=1">
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+    <!-- boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <div class="login_box">
+        <h2 class="login_title">Log In</h2>
+        <p class="login_subtitle">Log In to your account</p>
+        {% if messages %}
+            {% for message in messages %}
+                <p class="error_msg">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        <!-- <p id="incorrect">Re-enter the password correctly...!</p> -->
+        <form method="POST" onsubmit="validate_password()">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="login">
+            <input type="email" id="email" name="email" placeholder="Enter your email" required><br>
+            <select name="role" id="role" required>
+                <option value="" disabled selected>Select role</option>
+                <option value="principal">Principal</option>
+                <option value="teacher">Teacher</option>
+                <option value="student">Student</option>
+            </select><br>
+            <div class="input-group">
+                <input type="password" id="password" name="password" placeholder="Enter your Password" required>
+                <i class='bx bx-hide toggle-icon' onclick="togglePassword('password', this)"></i>
+            </div>
+        <button type="submit">Login</button>
+      </form>
+
+      <span>Don't have an account?<a href="{% url 'signup' %}">Signup</a></span>
+        </form>
+    </div>
+
+<script src="{% static 'js/login.js' %}"></script>
+</body>
+</html>
