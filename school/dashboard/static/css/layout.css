@@ -16,8 +16,7 @@ body {
     height: 100%;
 }
 
-/* ================= SIDEBAR ================== */
-
+/* SIDEBAR */
 .sidebar {
     width: 260px;
     background: rgba(255, 255, 255, 0.18);
@@ -36,6 +35,7 @@ body {
     margin-bottom: 30px;
 }
 
+/* MENU ITEMS */
 .menu-item {
     display: flex;
     align-items: center;
@@ -52,25 +52,45 @@ body {
     background: rgba(255, 255, 255, 0.25);
 }
 
-.logout {
-    margin-top: 50px;
-    padding: 12px;
-    text-align: left;
+/* DROPDOWN */
+.menu-dropdown .dropdown-content {
+    display: none;
+    padding-left: 20px;
+    flex-direction: column;
+}
+
+.menu-dropdown.active .dropdown-content {
+    display: flex;
+}
+
+.dropdown-content a {
     color: #fff;
     text-decoration: none;
-    border-radius: 8px;
+    padding: 8px 0;
+    font-size: 14px;
+}
+
+.dropdown-content a:hover {
+    text-decoration: underline;
+}
+
+/* LOGOUT */
+.logout {
+    padding: 12px;
     display: flex;
     gap: 10px;
     align-items: center;
-    transition: 0.3s ease;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
 }
 
 .logout:hover {
     background: rgba(255, 255, 255, 0.25);
 }
 
-/* ================= MAIN CONTENT ================== */
-
+/* MAIN CONTENT */
 .main-content {
     flex: 1;
     padding: 20px;

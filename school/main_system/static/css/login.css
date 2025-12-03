@@ -73,6 +73,17 @@ body {
     font-size: 15px;
     outline: none;
 }
+.login_box select option{
+    width: 80%;
+    padding: 12px 14px;
+    margin: 12px 0;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+    background: rgba(255, 255, 255, 0.25);
+    color: #0c0b0b;
+    font-size: 15px;
+    outline: none;
+}
 
 /* Placeholder color */
 .login_box input::placeholder {
