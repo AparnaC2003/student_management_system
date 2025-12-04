@@ -7,8 +7,8 @@ def principal_view(request):
 def all_teachers(request):
     return render(request,"principal/teachers/all_teachers.html")
 
-# def add_teacher(request):
-#     return render(request,"add_teacher")
+def add_teacher(request):
+    return render(request,"principal/teachers/add_teacher.html")
 
 def teacher_view(request):
     return render(request,"teacher_view")

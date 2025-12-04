@@ -1,0 +1,57 @@
+/* Dropdown container */
+.menu-dropdown {
+    margin-bottom: 10px;
+}
+
+/* Main clickable item */
+
+.menu-item:hover {
+    background: #7fa5ff;
+}
+
+/* Dropdown arrow icon */
+.dropdown-icon {
+    transition: transform 0.3s ease;
+}
+
+/* Rotate arrow when open */
+.menu-dropdown.active .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+/* Hide dropdown items */
+.dropdown-content {
+    display: none;
+    padding-left: 20px;
+    margin-top: 8px;
+}
+
+/* Show when active */
+.menu-dropdown.active .dropdown-content {
+    display: block;
+}
+
+/* Links inside dropdown */
+.dropdown-content a {
+    display: block;
+    padding: 8px;
+    background: #5184f4;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    text-decoration: none;
+    color: #eaeaea;
+    transition: background 0.2s;
+}
+
+.dropdown-content a:hover {
+    background: #5b8efc;
+    text-decoration: none;
+}
+
+/* Page Heading */
+.principal-title {
+    font-size: 24px;
+    font-weight: 600;
+    padding: 10px 0;
+    color: #333;
+}

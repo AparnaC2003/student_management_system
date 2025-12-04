@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Dashboard{% endblock %}</title>
 
-    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}?v=2">
+    <link rel="stylesheet" href="{% static 'css/principal_dashboard/principal.css' %}">
+    {% block extra_css %} {% endblock%}
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
@@ -29,44 +32,9 @@
                 <i class='bx bxs-user-detail'></i> Profile
             </a>
 
-            <!-- TEACHERS -->
-            <div class="menu-dropdown">
-                <a class="menu-item dropdown-btn">
-                    <i class='bx bx-chalkboard'></i> Teachers
-                    <i class='bx bx-chevron-down dropdown-icon'></i>
-                </a>
+            {% block extra_menu %}
+            {% endblock %}
 
-                <div class="dropdown-content">
-                    <a href="{% url 'all_teachers' %}">All Teachers</a>
-                    <a href="#">Add Teacher</a>
-                </div>
-            </div>
-
-            <!-- CLASSES -->
-            <div class="menu-dropdown">
-                <a class="menu-item dropdown-btn">
-                    <i class='bx bxs-book-alt'></i> Classes
-                    <i class='bx bx-chevron-down dropdown-icon'></i>
-                </a>
-
-                <div class="dropdown-content">
-                    <a href="#">All Classes</a>
-                    <a href="#">Add Class</a>
-                </div>
-            </div>
-
-            <!-- STUDENTS -->
-            <div class="menu-dropdown">
-                <a class="menu-item dropdown-btn">
-                    <i class='bx bxs-group'></i> Students
-                    <i class='bx bx-chevron-down dropdown-icon'></i>
-                </a>
-
-                <div class="dropdown-content">
-                    <a href="#">All Students</a>
-                    <a href="#">Add Student</a>
-                </div>
-            </div>
 
             <a href="#" class="menu-item"><i class='bx bx-cog'></i> Settings</a>
         </nav>
@@ -80,7 +48,7 @@
     <main class="main-content">
 
         <header class="topbar">
-            <h2>{% block page_title %}Dashboard{% endblock %}</h2>
+            <h2>{% block page_title %}{% endblock %}</h2>
         </header>
 
         <section class="content-section">
