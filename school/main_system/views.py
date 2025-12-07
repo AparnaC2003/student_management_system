@@ -17,7 +17,7 @@ def signup_view(request):
             USER.objects.create(Username = name,Email = email,Role = role,Password = password)
             print("user added succcessfully....!")
             return redirect('login')
-    return render(request,'signup.html',)
+    return render(request,'signup.html')
 
 def login_view(request):
     if request.method == 'POST':

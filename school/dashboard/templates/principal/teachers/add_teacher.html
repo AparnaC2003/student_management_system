@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/principal_dashboard/add_teacher.css' %}">
+<link rel="stylesheet" href="{% static 'css/principal_dashboard/add_teacher.css' %}?v=1">
 {% endblock %}
 
 {% block content %}
@@ -11,6 +11,12 @@
     <div class="page-header">
         <h2>Add Teacher</h2>
     </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p class="error_msg">{{message}}</p>
+        {% endfor %}
+    {% endif %}
 
     <form method="POST" class="teacher-form">
     {% csrf_token %}

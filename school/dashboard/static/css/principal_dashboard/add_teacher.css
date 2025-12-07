@@ -8,6 +8,11 @@
     margin-bottom: 20px;
 }
 
+.error_msg{
+    color: red;
+    font-size: 1em;
+}
+
 .teacher-form {
     width: 90%;
     background: rgba(255, 255, 255, 0.15);       /* transparent white */
