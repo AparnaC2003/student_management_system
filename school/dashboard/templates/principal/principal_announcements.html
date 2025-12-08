@@ -1,0 +1,87 @@
+{% extends "principal/principal.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/principal_dashboard/principal_announcements.css' %}?v=2">
+{% endblock %}
+
+{% block content %}
+
+<!-- Main Container -->
+<div class="announcement-wrapper">
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <h2>Announcements</h2>
+        <button class="add-btn" id="openPopup">+ Add Announcement</button>
+    </div>
+
+    <!-- Announcement Display Box -->
+    <div class="announcement-box">
+        {% for a in announcements %}
+        <div class="announcement-card" id="ann_{{ a.id }}">
+        <div class="ann-header">{{ a.title }}</div>
+        <div class="ann-details">{{ a.message }}</div>
+
+        <div class="ann-footer">
+            <span class="ann-date">
+                {{ a.created_at|date:"d M Y, h:i A" }}
+            </span>
+            <button class="remove-btn" onclick="removeAnnouncement(a.id )">Remove</button>
+        </div>
+    </div>
+
+        {% empty %}
+        <p class="no-announcement">No announcements yet</p>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+<!-- POPUP FORM -->
+<div id="popupForm" class="popup-container">
+    <div class="popup-box">
+        <h3>Add Announcement</h3>
+
+        <form method="post" action="">
+            {% csrf_token %}
+
+            <label>Heading</label>
+            <input type="text" name="heading" required>
+
+            <label>Details</label>
+            <textarea name="details" required></textarea>
+
+            <div class="btn-row">
+                <button type="submit" class="submit-btn">Add</button>
+                <button type="button" class="cancel-btn" id="closePopup">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% block extra_js %}
+<script>
+    // Open Popup
+    document.getElementById("openPopup").onclick = function () {
+        document.getElementById("popupForm").style.display = "flex";
+    }
+
+    // Close Popup
+    document.getElementById("closePopup").onclick = function () {
+        document.getElementById("popupForm").style.display = "none";
+    }
+
+    // Hide announcement card (frontend only)
+    function removeAnnouncement(id) {
+        let element = document.getElementById("ann_" + id);
+        if (element) {
+            element.style.display = "none";    
+        }
+    }
+</script>
+
+
+{% endblock %}
+{% endblock %}

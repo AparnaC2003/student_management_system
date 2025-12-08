@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/announcements.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="announcement-page">
+
+    <div class="announcement-bg"></div>
+
+    <!-- Announcement cards -->
+    <div class="announcement-list">
+        {% for ann in announcements %}
+        <div class="card">
+            <h3>{{ ann.title }}</h3>
+            <p>{{ ann.message }}</p>
+            <small>{{ ann.created_at|date:"M d, Y H:i" }}</small>
+        </div>
+        {% empty %}
+        <p>No announcements available.</p>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

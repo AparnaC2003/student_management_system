@@ -1,5 +1,5 @@
 /* MAIN WRAPPER */
-.teachers-container {
+.classes-container {
     padding: 20px;
 }
 
@@ -16,23 +16,8 @@
     font-weight: 600;
 }
 
-/* ADD BUTTON */
-.add-btn {
-    padding: 8px 18px;
-    background: #4b6cb7;
-    color: #fff;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 14px;
-    transition: 0.3s;
-}
-
-.add-btn:hover {
-    background: #395591;
-}
-
 /* TABLE STYLE */
-.teachers-table {
+.classes-table {
     width: 100%;
     border-collapse: collapse;
     background: #ffffff;
@@ -40,38 +25,23 @@
     overflow: hidden;
 }
 
-.teachers-table th {
-    background: #4b6cb7;
-    color: white;
+.classes-table th {
+    background: #4b6cb7;       /* Header background */
+    color: #ffffff;            /* White text */
     padding: 12px;
     text-align: left;
     font-size: 14px;
 }
 
-.teachers-table td {
+.classes-table td {
     padding: 12px;
     border-bottom: 1px solid #eee;
     font-size: 14px;
-    color: #1a237e;
+    color: #2e3a55;            /* Table body text color */
+    background: #ffffff;       /* White row background */
 }
 
-/* STATUS BADGES */
-.status {
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-    color: #fff;
-}
-
-.status.active {
-    background: #28a745;
-}
-
-.status.inactive {
-    background: #dc3545;
-}
-
-/* ACTION BUTTON */
+/* ACTION BUTTONS */
 .edit-btn {
     padding: 6px 12px;
     background: #4A90E2;
@@ -84,6 +54,7 @@
 .edit-btn:hover {
     background: #3A7ACB;
 }
+
 .btn-delete {
     padding: 6px 12px;
     background: #E74C3C;
@@ -95,4 +66,9 @@
 
 .btn-delete:hover {
     background: #C0392B;
+}
+
+/* LIGHT ROW HOVER */
+.classes-table tr:hover td {
+    background: #f5f7ff;
 }

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% load static %}
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/principal_dashboard/principal.css' %}?v=3">
+<link rel="stylesheet" href="{% static 'css/principal_dashboard/principal.css' %}?v=4">
 <link rel="stylesheet" href="{% static 'css/principal_dashboard/all_teachers.css' %}">
 <link rel="stylesheet" href="{% static 'css/principal_dashboard/add_teachers.css' %}">
 {% endblock %}
@@ -27,8 +27,8 @@
         <i class='bx bx-chevron-down dropdown-icon'></i>
     </a>
     <div class="dropdown-content">
-        <a href="#">All Classes</a>
-        <a href="#">Add Class</a>
+        <a href="{% url 'all_classes' %}">All Classes</a>
+        <a href="{% url 'add_class' %}">Add Class</a>
     </div>
 </div>
 
@@ -43,6 +43,11 @@
         <a href="#">Add Student</a>
     </div>
 </div>
+
+<!-- ANNOUNCEMENTS -->
+<a href="{% url 'principal_announcements' %}" class="menu-item">
+    <i class='bx bxs-megaphone'></i>Announcements
+</a>
 
 {% endblock %}
 

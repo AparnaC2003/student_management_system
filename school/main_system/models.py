@@ -7,3 +7,5 @@ class USER(models.Model):
     Role = models.CharField(max_length=50)
     Password = models.CharField(max_length=200)
     status = models.BooleanField(default=True)  # account is active by default
+
+

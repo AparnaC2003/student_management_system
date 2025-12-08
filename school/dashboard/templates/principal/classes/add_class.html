@@ -2,11 +2,11 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/principal_dashboard/add_class.css' %}?v=1">
+<link rel="stylesheet" href="{% static 'css/principal_dashboard/add_teacher.css' %}?v=2"> 
 {% endblock %}
 
 {% block content %}
-<div class="classes-container">
+<div class="teachers-container">
 
     <div class="page-header">
         <h2>Add Class</h2>
@@ -18,7 +18,7 @@
         {% endfor %}
     {% endif %}
 
-    <form method="POST" class="class-form">
+    <form method="POST" class="teacher-form">
         {% csrf_token %}
 
         <div class="form-grid">
@@ -29,8 +29,13 @@
             </div>
 
             <div class="form-group">
-                <label for="class_teacher">Class Teacher</label>
+                <label for="class_teacher_id">Class Teacher</label>
                 <input type="text" id="class_teacher" name="class_teacher" placeholder="Enter teacher name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="class_teacher">Teacher Id</label>
+                <input type="text" id="class_teacher_id" name="class_teacher_id" placeholder="Enter teacher name" required>
             </div>
 
             <div class="form-group">
@@ -43,14 +48,14 @@
                 <input type="number" id="strength" name="strength" placeholder="Enter number of students" required>
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="status">Status</label>
                 <select id="status" name="status" required>
                     <option value="" disabled selected>Select status</option>
                     <option value="Active">Active</option>
                     <option value="Inactive">Inactive</option>
                 </select>
-            </div>
+            </div> -->
 
         </div>
 
