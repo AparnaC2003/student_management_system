@@ -11,6 +11,15 @@ class All_Teacher(models.Model):
     joining_date = models.CharField(max_length=20)
     status = models.CharField(max_length=30)
 
+    
+# principal class
+class classes(models.Model):
+    class_name = models.CharField(max_length=20)
+    class_teacher = models.CharField(max_length=255)
+    class_teacher_id = models.CharField(max_length=10)
+    strength = models.IntegerField()
+    academic_year = models.CharField(max_length=20)
+
 # announcement table
 class Announcement(models.Model):
     title = models.CharField(max_length=200)
@@ -21,10 +30,20 @@ class Announcement(models.Model):
     def __str__(self):
         return self.title
     
-# principal class
-class classes(models.Model):
-    class_name = models.CharField(max_length=20)
-    class_teacher = models.CharField(max_length=255)
-    class_teacher_id = models.CharField(max_length=10)
-    strength = models.IntegerField()
+
+class ClassTeacherAssignment(models.Model):
+    class_obj = models.ForeignKey(classes, on_delete=models.CASCADE)
+    teacher = models.ForeignKey(All_Teacher, on_delete=models.CASCADE)
+
+    subject = models.CharField(max_length=255)
+    is_class_teacher = models.BooleanField(default=False)
+
     academic_year = models.CharField(max_length=20)
+    status = models.CharField(
+        max_length=20,
+        choices=[('ongoing', 'Ongoing'), ('completed', 'Completed')],
+        default='ongoing'
+    )
+
+    class Meta:
+        unique_together = ('teacher', 'class_obj', 'subject', 'academic_year')

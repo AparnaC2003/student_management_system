@@ -66,6 +66,9 @@ def add_class(request):
         return redirect('all_classes')  # URL name
     return render(request,"principal/classes/add_class.html")
 
+def assigned_details(request):
+    return render(request, "principal/assigned_details.html")
+
 # announcement view
 
 def principal_announcements(request):
@@ -92,10 +95,10 @@ def principal_announcements(request):
     })
 
 
-
+# teacher dashboard views
 
 def teacher_view(request):
-    return render(request,"teacher_view")
+    return render(request,"teacher/teacher.html")
 
 def student_view(request):
     return render(request,"student_view")

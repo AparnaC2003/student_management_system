@@ -1,0 +1,22 @@
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+/* Page Heading */
+.teacher-title {
+    font-size: 24px;
+    font-weight: 600;
+    padding: 10px 0;
+    color: #fff;
+}

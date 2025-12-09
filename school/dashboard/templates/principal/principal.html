@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% load static %}
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/principal_dashboard/principal.css' %}?v=4">
+<link rel="stylesheet" href="{% static 'css/principal_dashboard/principal.css' %}?v=5">
 <link rel="stylesheet" href="{% static 'css/principal_dashboard/all_teachers.css' %}">
 <link rel="stylesheet" href="{% static 'css/principal_dashboard/add_teachers.css' %}">
 {% endblock %}
@@ -41,6 +41,17 @@
     <div class="dropdown-content">
         <a href="#">All Students</a>
         <a href="#">Add Student</a>
+    </div>
+</div>
+<!-- assigned detailes -->
+<div class="menu-dropdown">
+    <a class="menu-item dropdown-btn">
+        <i class='bx bx-user-pin'></i>Assigning Teachers
+        <i class='bx bx-chevron-down dropdown-icon'></i>
+    </a>
+    <div class="dropdown-content">
+        <a href="{% url 'assigned_details' %}">Assigned Details</a>
+        <a href="#">Add Detail</a>
     </div>
 </div>
 
