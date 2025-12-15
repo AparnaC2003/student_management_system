@@ -29,7 +29,7 @@
         </thead>
 
         <tbody>
-            {% for item in assigned_list %}
+            {% for item in assignments %}
             <tr>
                 <td>{{ item.class_obj.class_name }}</td>
                 <td>{{ item.subject }}</td>
@@ -38,9 +38,9 @@
 
                 <td>
                     {% if item.is_class_teacher %}
-                        <span class="status active">Yes</span>
+                        <span>Yes</span>
                     {% else %}
-                        <span class="status inactive">No</span>
+                        <span>No</span>
                     {% endif %}
                 </td>
 
@@ -61,6 +61,7 @@
             </tr>
             {% endfor %}
         </tbody>
+
     </table>
 
 </div>

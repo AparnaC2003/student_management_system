@@ -1,0 +1,65 @@
+{% extends "teacher/teacher.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/teacher_dashboard/my_class.css' %}?v=1">
+{% endblock %}
+
+{% block content %}
+<div class="teachers-container">
+
+    <div class="page-header">
+        <h2>My Classes</h2>
+    </div>
+
+    <table class="teachers-table">
+        <thead>
+            <tr>
+                <th>Class</th>
+                <th>Subject</th>
+                <th>Class Teacher?</th>
+                <th>Strength</th>
+                <th>Academic Year</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for a in assignments %}
+        <tr>
+            <td>{{ a.class_obj.class_name }}</td>
+            <td>{{ a.subject }}</td>
+
+            <td>
+                {% if a.is_class_teacher %}
+                    <span >Yes</span>
+                {% else %}
+                    <span>No</span>
+                {% endif %}
+            </td>
+
+            <td>{{ a.class_obj.strength }}</td>
+
+            <td>{{ a.academic_year }}</td>
+
+            <td>
+                {% if a.class_obj.status == "ongoing" %}
+                    <span class="status active">Ongoing</span>
+                {% else %}
+                    <span class="status inactive">Completed</span>
+                {% endif %}
+            </td>
+
+
+            <td>
+                <a href="{% url 'teacher_class_dashboard' a.id %}" class="edit-btn">View More</a>
+
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "teacher/teacher.html" %}
+
+{% block content %}
+<div class="teachers-container">
+
+    <!-- HEADER -->
+    <div class="page-header">
+        <h2>
+            {{ assignment.class_obj.class_name }}
+            ({{ assignment.academic_year }}) – Students
+        </h2>
+
+        {% if assignment.is_class_teacher %}
+            <a href="#" class="add-btn">+ Add Student</a>
+        {% endif %}
+    </div>
+
+    <!-- TABLE -->
+    <table class="teachers-table">
+        <thead>
+            <tr>
+                <th>Admission No</th>
+                <th>Roll No</th>
+                <th>Name</th>
+
+                {% if assignment.is_class_teacher %}
+                    <th>Father Name</th>
+                    <th>Mother Name</th>
+                    <th>Phone</th>
+                {% endif %}
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for s in students %}
+            <tr>
+                <td>{{ s.admission_no }}</td>
+                <td>{{ s.roll_no }}</td>
+                <td>{{ s.name }}</td>
+
+                {% if assignment.is_class_teacher %}
+                    <td>{{ s.father_name }}</td>
+                    <td>{{ s.mother_name }}</td>
+                    <td>{{ s.phone_no }}</td>
+                {% endif %}
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No students found</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}

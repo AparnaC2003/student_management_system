@@ -19,22 +19,39 @@ def signup_view(request):
             return redirect('login')
     return render(request,'signup.html')
 
+
 def login_view(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         role = request.POST.get('role')
         password = request.POST.get('password')
-        UserEXist = USER.objects.filter(Email = email,Role = role,Password = password).first()
-        if UserEXist:
-            print("login successfull...! ")
-            if(role == 'principal'):
+
+        user = USER.objects.filter(
+            Email=email,
+            Role=role,
+            Password=password,
+            status=True
+        ).first()
+
+        if user:
+            # ✅ SET SESSION
+            request.session['user_id'] = user.id
+            request.session['user_role'] = user.Role
+            request.session['user_email'] = user.Email
+
+            if role == 'principal':
                 return redirect('principal')
-            elif(role == 'teacher'):
+            elif role == 'teacher':
                 return redirect('teacher')
             else:
                 return redirect('student')
         else:
-            print('user dosent exists')
-            messages.error(request,'User does not exists...!')
+            messages.error(request, 'Invalid credentials')
             return redirect('login')
-    return render(request,'login.html')
+
+    return render(request, 'login.html')
+
+
+
+
+

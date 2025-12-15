@@ -1,0 +1,40 @@
+{% extends "teacher/teacher.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/teacher_dashboard/myclass_dashboard.css' %}?v=1">
+{% endblock %}
+
+{% block content %}
+<div class="teachers-container">
+
+    <!-- HEADER -->
+    <div class="page-header">
+        <h2>
+            {{ assignment.class_obj.class_name }}
+            <span class="year">
+                ({{ assignment.academic_year }})
+            </span>
+        </h2>
+    </div>
+
+    <!-- 3 BUTTONS -->
+    <div class="button-group">
+
+        <a href="{% url 'teacher_class_students' assignment.id %}" class="dashboard-btn">
+            Student Details
+        </a>
+
+
+        <a href="#" class="dashboard-btn">
+            Subject Marks
+        </a>
+
+        <a href="#" class="dashboard-btn">
+            Attendance
+        </a>
+
+    </div>
+
+</div>
+{% endblock %}

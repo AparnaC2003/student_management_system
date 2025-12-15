@@ -20,6 +20,51 @@ class classes(models.Model):
     strength = models.IntegerField()
     academic_year = models.CharField(max_length=20)
 
+    status = models.CharField(
+        max_length=20,
+        choices=[('ongoing', 'Ongoing'), ('completed', 'Completed')],
+        default='ongoing'
+    )
+
+
+
+class ClassTeacherAssignment(models.Model):
+    class_obj = models.ForeignKey(classes, on_delete=models.CASCADE)
+    teacher = models.ForeignKey(All_Teacher, on_delete=models.CASCADE)
+
+    subject = models.CharField(max_length=255)
+    teacher_name = models.CharField(max_length=255)
+    is_class_teacher = models.BooleanField(default=False)
+
+    academic_year = models.CharField(max_length=20)
+
+    class Meta:
+        unique_together = ('teacher', 'class_obj', 'subject', 'academic_year')
+
+
+# student setails table\
+
+class Student(models.Model):
+    admission_no = models.CharField(max_length=20, primary_key=True)
+    roll_no = models.IntegerField()
+
+    name = models.CharField(max_length=255)
+    father_name = models.CharField(max_length=255)
+    mother_name = models.CharField(max_length=255)
+    phone_no = models.CharField(max_length=10)
+
+    class_obj = models.ForeignKey(classes, on_delete=models.CASCADE)
+
+    status = models.CharField(
+        max_length=20,
+        choices=[('active', 'Active'), ('inactive', 'Inactive')],
+        default='active'
+    )
+
+    def __str__(self):
+        return f"{self.admission_no} - {self.name}"
+
+
 # announcement table
 class Announcement(models.Model):
     title = models.CharField(max_length=200)
@@ -31,19 +76,3 @@ class Announcement(models.Model):
         return self.title
     
 
-class ClassTeacherAssignment(models.Model):
-    class_obj = models.ForeignKey(classes, on_delete=models.CASCADE)
-    teacher = models.ForeignKey(All_Teacher, on_delete=models.CASCADE)
-
-    subject = models.CharField(max_length=255)
-    is_class_teacher = models.BooleanField(default=False)
-
-    academic_year = models.CharField(max_length=20)
-    status = models.CharField(
-        max_length=20,
-        choices=[('ongoing', 'Ongoing'), ('completed', 'Completed')],
-        default='ongoing'
-    )
-
-    class Meta:
-        unique_together = ('teacher', 'class_obj', 'subject', 'academic_year')

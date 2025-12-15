@@ -1,0 +1,71 @@
+/* MAIN WRAPPER */
+.teachers-container {
+    padding: 20px;
+}
+
+/* PAGE HEADER */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.page-header h2 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* TABLE STYLE */
+.teachers-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.teachers-table th {
+    background: #4b6cb7;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.teachers-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    color: #1a237e;
+}
+
+/* STATUS BADGES */
+.status {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: #fff;
+}
+
+.status.active {
+    background: #28a745;   /* Green */
+}
+
+.status.inactive {
+    background: #dc3545;   /* Red */
+}
+
+/* ACTION BUTTON */
+.edit-btn {
+    padding: 6px 12px;
+    background: #4A90E2;
+    color: #000;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.edit-btn:hover {
+    background: #3A7ACB;
+}

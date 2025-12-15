@@ -2,63 +2,78 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/principal_dashboard/add_class.css' %}?v=1">
+<link rel="stylesheet" href="{% static 'css/principal_dashboard/add_teacher.css' %}?v=1">
 {% endblock %}
 
 {% block content %}
-<div class="classes-container">
+<div class="teachers-container">
 
     <div class="page-header">
-        <h2>Add Class</h2>
+        <h2>Add Teacher</h2>
     </div>
 
     {% if messages %}
         {% for message in messages %}
-            <p class="error_msg">{{ message }}</p>
+            <p class="error_msg">{{message}}</p>
         {% endfor %}
     {% endif %}
 
-    <form method="POST" class="class-form">
-        {% csrf_token %}
+    <form method="POST" class="teacher-form">
+    {% csrf_token %}
 
-        <div class="form-grid">
+    <div class="form-grid">
 
-            <div class="form-group">
-                <label for="class_name">Class Name</label>
-                <input type="text" id="class_name" name="class_name" placeholder="e.g., 8A" required>
-            </div>
-
-            <div class="form-group">
-                <label for="class_teacher">Class Teacher</label>
-                <input type="text" id="class_teacher" name="class_teacher" placeholder="Enter teacher name" required>
-            </div>
-
-            <div class="form-group">
-                <label for="year">Academic Year</label>
-                <input type="text" id="year" name="year" placeholder="e.g., 2024-25" required>
-            </div>
-
-            <div class="form-group">
-                <label for="strength">Total Students</label>
-                <input type="number" id="strength" name="strength" placeholder="Enter number of students" required>
-            </div>
-
-            <div class="form-group">
-                <label for="status">Status</label>
-                <select id="status" name="status" required>
-                    <option value="" disabled selected>Select status</option>
-                    <option value="Active">Active</option>
-                    <option value="Inactive">Inactive</option>
-                </select>
-            </div>
-
+        <div class="form-group">
+            <label for="teacher_id">Teacher ID</label>
+            <input type="text" id="teacher_id" name="teacher_id" placeholder="Enter Teacher ID" required>
         </div>
 
-        <div class="form-btn">
-            <button type="submit" class="submit-btn">Add Class</button>
+        <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter teacher name" required>
         </div>
 
-    </form>
+        <div class="form-group">
+            <label for="email">Email ID</label>
+            <input type="email" id="email" name="email" placeholder="Enter email address" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" name="phone" placeholder="Enter phone number" required>
+        </div>
+
+        <div class="form-group">
+            <label for="class_assigned">Class Assigned</label>
+            <input type="text" id="class_assigned" name="class_assigned" placeholder="e.g., 8A" required>
+        </div>
+
+        <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Enter subject" required>
+        </div>
+
+        <div class="form-group">
+            <label for="joining_date">Joining Date</label>
+            <input type="date" id="joining_date" name="joining_date" required>
+        </div>
+
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select id="status" name="status" required>
+                <option value="" disabled selected>Select status</option>
+                <option value="Active">Active</option>
+                <option value="On Leave">On Leave</option>
+                <option value="Resigned">Resigned</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="form-btn">
+        <button type="submit" class="submit-btn">Add Teacher</button>
+    </div>
+</form>
 
 </div>
 {% endblock %}
