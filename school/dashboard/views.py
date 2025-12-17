@@ -219,6 +219,10 @@ def teacher_class_students(request, assignment_id):
         }
     )
 
+# adding the student details in teacher myclass
+
+# def add_student_details(request):
+
 
 
 def student_view(request):

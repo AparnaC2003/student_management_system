@@ -1,4 +1,10 @@
 {% extends "teacher/teacher.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/teacher_dashboard/my_class.css' %}?v=2">
+{% endblock %}
+
 
 {% block content %}
 <div class="teachers-container">
@@ -11,7 +17,7 @@
         </h2>
 
         {% if assignment.is_class_teacher %}
-            <a href="#" class="add-btn">+ Add Student</a>
+            <a href="#" class="add-btn" onclick="openModal()">+ Add Student</a>
         {% endif %}
     </div>
 
@@ -28,6 +34,8 @@
                     <th>Mother Name</th>
                     <th>Phone</th>
                 {% endif %}
+
+                <th>Status</th>
             </tr>
         </thead>
 
@@ -43,6 +51,8 @@
                     <td>{{ s.mother_name }}</td>
                     <td>{{ s.phone_no }}</td>
                 {% endif %}
+
+                <td>{{ s.status }}</td>
             </tr>
             {% empty %}
             <tr>
@@ -53,4 +63,40 @@
     </table>
 
 </div>
+
+
+<!-- ADD STUDENT MODAL -->
+<div id="studentModal" class="modal">
+    <div class="modal-content">
+        <h3>Add Student</h3>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <input type="text" name="admission_no" placeholder="Admission No" required>
+            <input type="number" name="roll_no" placeholder="Roll No" required>
+            <input type="text" name="name" placeholder="Student Name" required>
+            <input type="text" name="father_name" placeholder="Father Name">
+            <input type="text" name="mother_name" placeholder="Mother Name">
+            <input type="text" name="phone_no" placeholder="Phone No">
+
+            <div class="modal-actions">
+                <button type="submit" class="save-btn">Save</button>
+                <button type="button" class="btn-delete" onclick="closeModal()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openModal() {
+        document.getElementById('studentModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('studentModal').style.display = 'none';
+    }
+</script>
+
+
 {% endblock %}
