@@ -198,30 +198,63 @@ def teacher_class_dashboard(request, assignment_id):
         }
     )
 
-# student details view
+# student details view/adding student details/
 def teacher_class_students(request, assignment_id):
     assignment = get_object_or_404(
         ClassTeacherAssignment,
         id=assignment_id
     )
 
-    # fetch students of that class only
+    fetched_student = None
+    action = request.POST.get("action")
+
+    if request.method == 'POST' and assignment.is_class_teacher:
+
+        if action == "add-student":
+            Student.objects.create(
+                admission_no=request.POST.get('admission_no'),
+                roll_no=request.POST.get('roll_no'),
+                name=request.POST.get('name'),
+                father_name=request.POST.get('father_name'),
+                mother_name=request.POST.get('mother_name'),
+                phone_no=request.POST.get('phone_no'),
+                status=request.POST.get('status'),
+                class_obj=assignment.class_obj
+            )
+
+            return redirect(
+                'teacher_class_students',
+                assignment_id=assignment.id
+            )
+
+        elif action == "fetch-student":
+            admission_no = request.POST.get('admission_no')
+
+            try:
+                fetched_student = Student.objects.get(
+                    admission_no=admission_no,
+                    class_obj=assignment.class_obj
+                )
+            except Student.DoesNotExist:
+                fetched_student = None
+
     students = Student.objects.filter(
         class_obj=assignment.class_obj
-    )
+    ).order_by('roll_no')
 
     return render(
         request,
         'teacher/myclass_students.html',
         {
             'assignment': assignment,
-            'students': students
+            'students': students,
+            'fetched_student': fetched_student
         }
     )
 
-# adding the student details in teacher myclass
 
-# def add_student_details(request):
+
+
 
 
 
